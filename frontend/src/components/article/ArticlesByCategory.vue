@@ -1,18 +1,18 @@
 <template>
-  <div class="articles-by-category">
-      <PageTitle icon="fa fa-folder-o" :main="category.name" sub="Categoria" />
-      <ul>
-          <li v-for="article in articles" :key="article.id">
-              <articleItem :article="article" />
-          </li>
-      </ul>
-      <div class="load-more">
-          <button v-if="loadMore" 
+    <div class="articles-by-category">
+        <PageTitle icon="fa fa-folder-o"
+            :main="category.name" sub="Categoria" />
+        <ul>
+            <li v-for="article in articles" :key="article.id">
+                <ArticleItem :article="article" />
+            </li>
+        </ul>
+        <div class="load-more">
+            <button v-if="loadMore"
                 class="btn btn-lg btn-outline-primary"
-                @click="getArticles">Carregar Mais Artigos
-            </button>
-      </div>
-  </div>
+                @click="getArticles">Carregar Mais Artigos</button>
+        </div>
+    </div>
 </template>
 
 <script>

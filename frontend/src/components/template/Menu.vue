@@ -1,13 +1,13 @@
 <template>
-  <aside class="menu" v-show="isMenuVisible">
-      <div class="menu-filter">
-          <i class="fa fa-search fa-lg"></i>
-          <input type="text" placeholder="Digite para filtrar..." 
-            v-model="treeFilter" class="filter-field" />
-      </div>
-      <Tree :data="treeData" :options="treeOptions"
+    <aside class="menu" v-show="isMenuVisible">
+        <div class="menu-filter">
+            <i class="fa fa-search fa-lg"></i>
+            <input type="text" placeholder="Digite para filtrar..."
+                v-model="treeFilter" class="filter-field">
+        </div>
+        <Tree :data="treeData" :options="treeOptions"
             :filter="treeFilter" ref="tree" />
-  </aside>
+    </aside>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
             treeData: this.getTreeData(),
             treeOptions: {
                 propertyNames: { 'text': 'name' },
-                filter: { emptyText: 'Categoria não encontrada'}
+                filter: { emptyText: 'Categoria não encontrada' }
             }
         }
     },
@@ -40,6 +40,10 @@ export default {
                 name: 'articlesByCategory',
                 params: { id: node.id }
             })
+
+            if(this.$mq === 'xs' || this.$mq === 'sm') {
+                this.$store.commit('toggleMenu', false)
+            }
         }
     },
     mounted() {
@@ -58,14 +62,15 @@ export default {
         flex-wrap: wrap;
     }
 
-    .menu a, .menu a:hover {
+    .menu a,
+    .menu a:hover {
         color: #fff;
         text-decoration: none;
     }
 
     .menu .tree-node.selected > .tree-content,
     .menu .tree-node .tree-content:hover {
-        background-color: rgba(255,255,255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     .tree-arrow.has-child {
@@ -79,16 +84,16 @@ export default {
 
         margin: 20px;
         padding-bottom: 8px;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #AAA;
     }
 
     .menu .menu-filter i {
-        color: #aaa;
+        color: #AAA;
         margin-right: 10px;
     }
 
     .menu input {
-        color: #ccc;
+        color: #CCC;
         font-size: 1.3rem;
         border: 0;
         outline: 0;
@@ -97,8 +102,8 @@ export default {
     }
 
     .tree-filter-empty {
-        color: #ccc;
-        margin-left: 20px;
+        color: #CCC;
         font-size: 1.3rem;
+        margin-left: 20px;
     }
 </style>

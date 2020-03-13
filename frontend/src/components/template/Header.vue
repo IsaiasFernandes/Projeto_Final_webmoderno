@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <a class="toggle" @click="toggleMenu">
+        <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
             <i class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">
@@ -14,8 +14,8 @@
 import UserDropdown from './UserDropdown'
 
 export default {
-    name:'Header',
-    components: {UserDropdown},
+    name: 'Header',
+    components: { UserDropdown },
     props: {
         title: String,
         hideToggle: Boolean,
@@ -52,13 +52,13 @@ export default {
         text-align: center;
     }
 
-    .title a{
-        color: #fff;
+    .title a {
+        color: #FFF;
         text-decoration: none;
     }
 
-    .title a:hover{
-        color: #fff;
+    .title a:hover {
+        color: #FFF;
         text-decoration: none;
     }
 
@@ -76,6 +76,6 @@ export default {
 
     header.header > a.toggle:hover {
         color: #fff;
-        background-color:  rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
     }
 </style>
